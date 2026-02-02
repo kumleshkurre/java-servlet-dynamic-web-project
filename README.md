@@ -156,6 +156,104 @@ public class Kurre extends HttpServlet {
 }
 
 ```
+## Second Program Insert Qury Add
+### 1️⃣ Create HTML Page
+📍 Location: `src/main/webapp/index.html`
+```
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<center>
+<form action="Servlent" method="Get">
+<h1>THIS IS MY JAVA WEB PAGE</h1>
+<form action="Servlent" method="Get">
+<label>Name</label> <input type="text"name="name"><br><br> 
+<label>Email</label> <input type="text"name="email"><br><br> 
+<label>Mobail</label> <input type="text"name="mobail"><br><br> 
+<label>Age</label> <input type="text"name="age"><br><br> 
+<label>City</label> <input type="text"name="city"><br><br> 
+<input type="submit" value="Submit">        <!--  // jo value server pe submit hota hai kisi na kisi key ka agenst hota hai -->
+</form>
+</center>                                    <!--jo bhi requst ham insert karenga wo jsp page me redarect hoga-->
+</body>
+</html>
+```
+### 2️⃣ Servlet Code (Kurre.java)
+📍 Location: src/main/java/CSkumlesh/Kurre.java
+```
+package Servlentdataconnection;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+
+@WebServlet("/Servlent")
+public class Servlent extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    
+    public Servlent() {
+        super();
+        // TODO Auto-generated constructor stub
+        
+    }
+      protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 //TODO Auto-generated method stub
+    	  
+        response.getWriter().append("Served at: ").append(request.getContextPath());
+        response.setContentType("text/html"); 
+		String name=request.getParameter("name");
+		String email=request.getParameter("email");     //data lake racho
+		String mobail=request.getParameter("mobail");
+		int age=Integer.parseInt(request.getParameter("age"));
+		String city=request.getParameter("city");
+		
+		    //database connection
+		         Connection con;
+	             PreparedStatement psmt;  //insert update delete
+		 try {
+	    	  String url= "jdbc:postgresql://localhost:5432/your_database_name";
+		    	String user= "your_username";
+		    	String pwd= "YOUR_PASSWORD";
+	    	   Class.forName("org.postgresql.Driver");
+	    	   con=DriverManager.getConnection(url,user,pwd);
+	    	 
+	    	   
+	    	  System.out.println("Connection Successfull");   //connection check
+	    	  
+	    	  //Insert Qury
+	    	  psmt=con.prepareStatement("insert into contact(name,email,mob,age,city)values(?,?,?,?,?)");
+	    	  psmt.setString(1,name);
+	    	  psmt.setString(2,email);
+	    	  psmt.setString(3,mobail);      //data ko dsatbase me insert karo 
+	    	  psmt.setInt(4,age);
+	    	  psmt.setString(5,city);
+	    	  
+	    	  int r=psmt.executeUpdate();  // executeUpdate 0 and 1 value return kerta hai
+	    	  
+	    	  if(r>0) {           //r 0 se beda hai
+	    		     System.out.println("Insert Success");
+	    	  }else {
+	    		     System.out.println("Insert Failed");
+	    	  }
+	       }catch(Exception e) {
+	    	   System.out.println(e);
+	       }
+		
+	}
+}
+```
+
 ## 🎯 Learning Outcomes
 - Creating Dynamic Web Projects
 - Using web.xml with Servlets
