@@ -182,8 +182,8 @@ public class Kurre extends HttpServlet {
 </body>
 </html>
 ```
-### 2️⃣ Servlet Code (Kurre.java)
-📍 Location: src/main/java/CSkumlesh/Kurre.java
+### 2️⃣ Servlet Code (Servlent.java)
+📍 Location: src/main/java/Servlentdataconnection/Servlent.java
 ```
 package Servlentdataconnection;
 
