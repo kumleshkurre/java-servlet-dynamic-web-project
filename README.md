@@ -24,7 +24,7 @@ User input is collected through an HTML form and processed using a Java Servlet.
 ---
 
 ## 📂 Project Structure
-```
+```js
 ProjectName
 └── src
 └── src/main/java
@@ -64,7 +64,7 @@ ProjectName
 ### 3️⃣ Create HTML Page
 📍 Location: `src/main/webapp/index.html`
 
-```
+```css
 html
 <!DOCTYPE html>
 <html>
@@ -87,7 +87,7 @@ html
 ```
 ### 4️⃣ Servlet Code (Kurre.java)
 📍 Location: src/main/java/CSkumlesh/Kurre.java
-```
+```js
 package CSkumlesh;
 
 import jakarta.servlet.ServletException;
@@ -159,7 +159,7 @@ public class Kurre extends HttpServlet {
 ## Second Program Insert Qury Add
 ### 1️⃣ Create HTML Page
 📍 Location: `src/main/webapp/index.html`
-```
+```css
 <!DOCTYPE html>
 <html>
 <head>
@@ -184,7 +184,7 @@ public class Kurre extends HttpServlet {
 ```
 ### 2️⃣ Servlet Code (Servlent.java)
 📍 Location: src/main/java/Servlentdataconnection/Servlent.java
-```
+```jss
 package Servlentdataconnection;
 
 import jakarta.servlet.ServletException;
